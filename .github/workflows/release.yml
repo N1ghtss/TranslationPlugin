@@ -7,6 +7,12 @@ name: Release
 on:
   release:
     types: [ released ]
+  workflow_dispatch:  # 允许手动触发
+    inputs:
+      branch:
+        description: 'Specify the branch to build'
+        required: false
+        default: 'master'
 
 env:
   AUTO_SNAPSHOT_VERSION: false
@@ -26,7 +32,7 @@ jobs:
       - name: Fetch Sources
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.inputs.branch || github.event.release.tag_name || 'master' }}
 
       # Set up Java environment for the next steps
       - name: Setup Java
