@@ -70,7 +70,7 @@ class TranslateDocumentationTask(
 
 
     companion object {
-        private const val DEFAULT_TIMEOUT_IN_MILLIS = 3_000
+        private const val DEFAULT_TIMEOUT_IN_MILLIS = 10_000
         private const val TIME_TO_BLOCK_IN_MILLIS = 100
     }
 }
